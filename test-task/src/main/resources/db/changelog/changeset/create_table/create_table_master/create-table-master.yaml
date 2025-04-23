@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/create_table/create-table-users.sql
+  - include:
+      file: db/changelog/changeset/create_table/create-table-users-photo.sql
+  - include:
+      file: db/changelog/changeset/create_table/create-table-user-contacts.sql
+  - include:
+      file: db/changelog/changeset/create_table/create-table-tokens.sql

@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: test-task
+  config:
+    import: "optional:application-secrets.yaml"
+  url:
+    useravatar: https://images.app.goo.gl/HQ1UfYYT6QnUSm9x5
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/changelog-master.yaml
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    jwt:
+      secret: ${JWT_SECRET}
+      expiration:
+        access: ${JWT_EXPIRATION_ACCESS}
+        refresh: ${JWT_EXPIRATION_REFRESH}
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: TRACE
+    com.secureuser.service.model.listener: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+security:
+  bcrypt:
+    strength: ${BCRYPT_STRENGTH}
+app:
+  file:
+    upload-dir: ${UPLOAD_DIR:uploads}

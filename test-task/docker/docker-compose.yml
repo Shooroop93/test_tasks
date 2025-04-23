@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:17.4
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_DB: test_task
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty12345
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    networks:
+      - backend
